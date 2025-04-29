@@ -94,8 +94,8 @@ function User(userName,email,isActive){
 let  users =[new User("Jacky","jacky@gmail.com",true),new User("Jack","jack@gmail.com",true),new User("Jackson","jackson@gmail.com",true),new User("Jane","jane@gmail.com",true),new User("James","james@gmail.com",true)]
 
 
-function deactivateUsers(userList) {
-    return userList.map(user => {
+function deactivateUsers(users) {
+    return users.map(user => {
         if (Math.random() >= 0.6) {
             user.isActive = false;
         }
@@ -105,9 +105,9 @@ function deactivateUsers(userList) {
 
 
 const changedUsers = deactivateUsers(users);
-changedUsers.forEach(user => {
-    if (user.isActive === true) {
-        console.log(user.username);
+changedUsers.forEach(activeUser => {
+    if (activeUser.isActive) {
+        console.log(activeUser.username);
     }
 });
 
