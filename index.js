@@ -119,15 +119,15 @@ changedUsers.forEach(activeUser => {
 // and reach within that distance. If none are found, return "No destinations available under your budget and distance".
 
 
-function perfectDestination(destination,maxDistanceKm, maxBudgetUSD) {
-    let availableDestination = destinations.filter(destination => 
-        destination.distance <= maxDistanceKm && destination.budgetRequired <= maxBudgetUSD
+function findDestination(maxDistance, maxBudget) {
+    let availableDestinations = destinations.filter(destination => 
+        destination.distance <= maxDistance && destination.budgetRequired <= maxBudget
     );
 
-    if (availableDestination.length > 0) {
-        availableDestination.forEach(destination => {
+    if (availableDestinations) {
+        availableDestinations.forEach(destination => {
             console.log(
-                `${destination.name}  ${destination.distance} km, $${destination.budgetRequired} USD`
+                `${destination.name} ${destination.distance} km,$${destination.budgetRequired} USD`
             );
         });
     } else {
@@ -136,12 +136,12 @@ function perfectDestination(destination,maxDistanceKm, maxBudgetUSD) {
 }
 
 let destinations = [
-    {name: "Maldives", distance: 20000, budgetRequired: 3000},
-    {name: "Kyoto", distance: 40000, budgetRequired: 5000},
-    {name: "Cayman Islands", distance: 25000, budgetRequired: 4500},
-    {name: "Egypt", distance: 1000, budgetRequired: 2500}
+    {name: "Kigali", distance: 20000, budgetRequired: 3000},
+    {name: "Kampala", distance: 40000, budgetRequired: 5000},
+    {name: "Nairobi", distance: 2500, budgetRequired: 500},
+    {name: "Bujumbura", distance: 1000, budgetRequired: 2500}
 ];
 
-perfectDestination(destination,3000, 2500);
+findDestination(3000, 2500);
 
   
