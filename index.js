@@ -124,7 +124,7 @@ function findDestination(maxDistance, maxBudget) {
         destination.distance <= maxDistance && destination.budgetRequired <= maxBudget
     );
 
-    if (availableDestinations) {
+    if (availableDestinations.length>0) {
         availableDestinations.forEach(destination => {
             console.log(
                 `${destination.name} ${destination.distance} km,$${destination.budgetRequired} USD`
