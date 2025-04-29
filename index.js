@@ -85,103 +85,37 @@ calculateAverage(grades);
 //4. Write a function constructor called User that takes username, email, and isActive (boolean). 
 // Create an array of users. Write a program that loops through the array and deactivates users who have not logged 
 // in recently (simulate this with a random isActive: false assignment) and print out the usernames of active users.
-
-
-
-//5.You have an array of destination objects, each with name, distance (in km), and budgetRequired (in dollars).
-//  Write a function that accepts a maximum distance and a budget and returns all destinations the user can afford 
-// and reach within that distance. If none are found, return "No destinations available under your budget and distance".
-
-
-
 function User(userName,email,isActive){
     this.username = userName;
     this.email = email;
     this.isActive = isActive;
 }
 
-let  user1 =[new User("Jacky","jacky@gmail.com",true),new User("Jack","jack@gmail.com",false),new User("Jackson","jackson@gmail.com",true),new User("Jane","jane@gmail.com",false),new User("James","james@gmail.com",true)]
+let  user1 =[new User("Jacky","jacky@gmail.com",true),new User("Jack","jack@gmail.com",true),new User("Jackson","jackson@gmail.com",true),new User("Jane","jane@gmail.com",true),new User("James","james@gmail.com",true)]
 
 
-
-
-
-
-
-
-
-
-
-
-
-4.///////////////////////////////////////////////////////////////
-
-
-function User(username, email, isActive) {
-    this.username = username;
-    this.email = email;
-    this.isActive = isActive;
-}
-
-const users = [
-    new User('john_doe', 'john@example.com', true),
-    new User('jane_smith', 'jane@example.com', true),
-    new User('bob_johnson', 'bob@example.com', true),
-    new User('sarah_lee', 'sarah@example.com', true),
-    new User('mike_wilson', 'mike@example.com', true)
-];
-
-
-function deactivateInactiveUsers(userList) {
+function deactivateUsers(userList) {
     return userList.map(user => {
-        if (Math.random() > 0.5) {
+        if (Math.random() >= 0.6) {
             user.isActive = false;
         }
         return user;
     });
 }
 
-// 4. Get updated user list
-const updatedUsers = deactivateInactiveUsers(users);
 
-// 5. Print active usernames
-console.log("Active Users:");
+const updatedUsers = deactivateUsers(users);
 updatedUsers.forEach(user => {
-    if (user.isActive) {
+    if (user.isActive === true) {
         console.log(user.username);
     }
 });
 
-/* Sample Output:
-Active Users:
-john_doe
-sarah_lee
-mike_wilson
-*/
-
-// Alternative: Filter + Map approach
-const activeUsers = updatedUsers
-    .filter(user => user.isActive)
-    .map(user => user.username);
-
-console.log("\nActive Users (alternative method):");
-console.log(activeUsers);
 
 
-
-
-
-
-function deactivateInactiveUsersPure(userList) {
-    return userList.map(user => {
-        const shouldDeactivate = Math.random() > 0.5;
-        return new User(
-            user.username,
-            user.email,
-            shouldDeactivate ? false : user.isActive
-        );
-    });
-}
+//5.You have an array of destination objects, each with name, distance (in km), and budgetRequired (in dollars).
+//  Write a function that accepts a maximum distance and a budget and returns all destinations the user can afford 
+// and reach within that distance. If none are found, return "No destinations available under your budget and distance".
 
 
 
