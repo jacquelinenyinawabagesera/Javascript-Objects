@@ -58,25 +58,26 @@ console.log(availableSortedProducts);
 
 
 function calculateAverage(grades) {
-    grades.forEach(student => {
+    Object.entries(grades).forEach(([studentName, scores]) => {
         let sum = 0;
-        student.scores.forEach(score => {
+        scores.forEach(score => {
             sum += score;
         });
-        let average = sum / student.scores.length;
+
+        let average = sum / scores.length;
 
         if (average > 70) {
-            console.log("Pass");
+            console.log(`${studentName} ${average} pass`);
         } else {
-            console.log("Fail");
+            console.log(`${studentName} ${average} fail`);
         }
     });
 }
 
-const grades = [
-    { name: "Jacky", scores: [70,80,90,80]},
-    { name: "Jack", scores: [60,60,60,60] }
-];
+const grades = {
+    Jacky: [70, 80, 90, 80],
+    Jack: [60, 60, 60, 60]
+};
 
 calculateAverage(grades);
 
@@ -117,3 +118,30 @@ changedUsers.forEach(activeUser => {
 //  Write a function that accepts a maximum distance and a budget and returns all destinations the user can afford 
 // and reach within that distance. If none are found, return "No destinations available under your budget and distance".
 
+
+function perfectDestination(destination,maxDistanceKm, maxBudgetUSD) {
+    let availableDestination = destinations.filter(destination => 
+        destination.distance <= maxDistanceKm && destination.budgetRequired <= maxBudgetUSD
+    );
+
+    if (availableDestination.length > 0) {
+        availableDestination.forEach(destination => {
+            console.log(
+                `${destination.name}  ${destination.distance} km, $${destination.budgetRequired} USD`
+            );
+        });
+    } else {
+        console.log("No destination available under your budget and distance");
+    }
+}
+
+let destinations = [
+    {name: "Maldives", distance: 20000, budgetRequired: 3000},
+    {name: "Kyoto", distance: 40000, budgetRequired: 5000},
+    {name: "Cayman Islands", distance: 25000, budgetRequired: 4500},
+    {name: "Egypt", distance: 1000, budgetRequired: 2500}
+];
+
+perfectDestination(destination,3000, 2500);
+
+  
