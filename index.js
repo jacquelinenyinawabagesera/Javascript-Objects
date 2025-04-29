@@ -91,7 +91,7 @@ function User(userName,email,isActive){
     this.isActive = isActive;
 }
 
-let  user1 =[new User("Jacky","jacky@gmail.com",true),new User("Jack","jack@gmail.com",true),new User("Jackson","jackson@gmail.com",true),new User("Jane","jane@gmail.com",true),new User("James","james@gmail.com",true)]
+let  users =[new User("Jacky","jacky@gmail.com",true),new User("Jack","jack@gmail.com",true),new User("Jackson","jackson@gmail.com",true),new User("Jane","jane@gmail.com",true),new User("James","james@gmail.com",true)]
 
 
 function deactivateUsers(userList) {
@@ -104,8 +104,8 @@ function deactivateUsers(userList) {
 }
 
 
-const updatedUsers = deactivateUsers(users);
-updatedUsers.forEach(user => {
+const changedUsers = deactivateUsers(users);
+changedUsers.forEach(user => {
     if (user.isActive === true) {
         console.log(user.username);
     }
@@ -116,51 +116,4 @@ updatedUsers.forEach(user => {
 //5.You have an array of destination objects, each with name, distance (in km), and budgetRequired (in dollars).
 //  Write a function that accepts a maximum distance and a budget and returns all destinations the user can afford 
 // and reach within that distance. If none are found, return "No destinations available under your budget and distance".
-
-
-
-5.///////////////////////////////////////////////////////
-
-
-function findAvailableDestinations(destinations, maxDistance, maxBudget) {
-    const available = destinations.filter(destination => 
-        destination.distance <= maxDistance && 
-        destination.budgetRequired <= maxBudget
-    );
-    
-    return available.length > 0 
-        ? available 
-        : "No destinations available under your budget and distance";
-}
-
-// Example usage:
-const destinations = [
-    { name: "Beach Resort", distance: 50, budgetRequired: 1000 },
-    { name: "Mountain Cabin", distance: 200, budgetRequired: 800 },
-    { name: "City Museum", distance: 10, budgetRequired: 50 },
-    { name: "Lake Camp", distance: 150, budgetRequired: 300 }
-];
-
-console.log(findAvailableDestinations(destinations, 100, 500));
-// Output: [{ name: "City Museum", ... }, { name: "Lake Camp", ... }]
-
-console.log(findAvailableDestinations(destinations, 5, 100));
-// Output: "No destinations available under your budget and distance"
-
-
-
-function findAvailableDestinations(destinations, maxDistance, maxBudget) {
-    const available = [];
-    
-    destinations.forEach(destination => {
-        if(destination.distance <= maxDistance && 
-           destination.budgetRequired <= maxBudget) {
-            available.push(destination);
-        }
-    });
-    
-    return available.length ? available : "No destinations available...";
-}
-
-
 
